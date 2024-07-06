@@ -1,22 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Вакансии</title>
+    <title>Vacancies</title>
 </head>
 <body>
-    <h1>Список вакансий</h1>
+    <h1>Vacancies</h1>
+    <p>Total Vacancies: {{ total_vacancies }}</p>
     <ul>
         {% for vacancy in vacancies %}
         <li>
-            <a href="{{ vacancy.url }}">{{ vacancy.name }}</a><br>
-            Зарплата: от {{ vacancy.salary_from }} до {{ vacancy.salary_to }} {{ vacancy.currency }}<br>
-            Работодатель: {{ vacancy.employer }}
+            <a href="{{ vacancy.url }}">{{ vacancy.name }}</a> <br>
+            <p>ЗП:
+                {{ vacancy.salary_from }} -
+                {{ vacancy.salary_to }}
+                {{ vacancy.currency }}<br>
+            </p>
+            <p>Работадатель:
+                ({{ vacancy.employer }})<br><br>
+            </p>
         </li>
         {% endfor %}
     </ul>
-    {% if not vacancies %}
-    <p>Нет вакансий по заданным параметрам.</p>
-    {% endif %}
 </body>
 </html>
